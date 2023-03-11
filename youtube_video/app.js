@@ -4,6 +4,7 @@ const fullScreenBtn = document.querySelector(".full-screen-btn");
 const miniPlayerBtn = document.querySelector(".mini-player-btn");
 const muteBtn = document.querySelector(".mute-btn");
 const captionsBtn = document.querySelector(".speed-btn");
+const speedBtn = document.querySelector(".speed-btn");
 const currentTimeElem = document.querySelector(".current-time");
 const totalTimeElem = document.querySelector(".total-time");
 const previewImg = document.querySelector(".previewImg");
@@ -55,7 +56,7 @@ timelineContainer.addEventListener("mousemove", handleTimelineUpdate);
 timelineContainer.addEventListener("mousedown", toggleScrubbing);
 
 document.addEventListener("mouseup", (e) => {
-  if (isScrubbing) toggleSrubbing(e);
+  if (isScrubbing) toggleScrubbing(e);
 });
 
 document.addEventListener("mousemove", (e) => {
@@ -100,3 +101,44 @@ function handleTimelineUpdate(e) {
     timelineContainer.style.setProperty("--progress-position", percent)
   }
 }
+
+// Playback Speed
+speedBtn.addEventListener("click", changePlaybackSpeed);
+
+function changePlaybackSpeed() {
+    let newPlaybackRate = video.playbackRate + 0.25;
+    if (newPlaybackRate > 2) newPlaybackRate = 0.25;
+
+    video.playbackRate = newPlaybackRate;
+    speedBtn.textContent = `${newPlaybackRate}x`;
+    
+};
+
+// captions
+
+const captions = video.textTracks[0];
+captions.mode = "hidden";
+
+captionsBtn.addEventListener("click", toggleCaptions);
+
+function toggleCaptions() {
+    const isHidden = captions.mode === "hidden";
+    captions.mode = isHidden ? "showing" : "hidden";
+    videoContainer.classList.toggle("captions", isHidden);
+};
+
+//Duration
+video.addEventListener("loadeddata", () => {
+    totalTimeElem.textContent = formatDuration(video.duration);
+});
+
+video.addEventListener("timeupdate", () => {
+    currentTimeElem.textContent = formatDuration(video.currentTime);
+
+    const percent = video.currentTime / video.duration;
+    timelineContainer.style.setProperty("--progress-position", percent)
+});
+
+const leadingZeroFormatter = new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2, })
+
+

@@ -1,0 +1,24 @@
+{
+  "name": "jsprojects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass --watch input.scss output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeshachArinze/JSProjects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeshachArinze/JSProjects/issues"
+  },
+  "homepage": "https://github.com/MeshachArinze/JSProjects#readme",
+  "dependencies": {
+    "sass": "^1.59.1"
+  }
+}

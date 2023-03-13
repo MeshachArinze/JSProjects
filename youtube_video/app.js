@@ -183,3 +183,57 @@ video.addEventListener("volumechange", () => {
 });
 
 
+//view modes
+
+theaterBtn.addEventListener("click", toggleTheaterMode);
+fullScreenBtn.addEventListener("click", toggleFullScreenMode);
+miniPlayerBtn.addEventListener("click", toggleMiniPlayerMode);
+
+
+function toggleTheaterMode() {
+  videoContainer.classList.toggle("theater");
+}
+
+function toggleFullScreenMode() {
+  if (document.fullscreenElement == null) {
+    videoContainer.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+
+  }
+}
+
+function toggleMiniPlayerMode() {
+  if ( videoContainer.classList.contains("mini-player")) {
+    document.exitPictureInPicture();   
+  } else {
+    video.requestPictureInPicture();
+  }
+}
+
+document.addEventListener("fullscreenchange", () => {
+  videoContainer.classList.toggle("full-screen", document.fullscreenElement)
+})
+
+video.addEventListener("enterpictureinpicture", () => {
+  videoContainer.classList.add("mini-player")
+} );
+
+//play/pause
+playPauseBtn.addEventListener("click", togglePlay)
+video.addEventListener("click", togglePlay)
+
+function togglePlay() {
+  video.paused ? video.play() : video.pause()
+}
+
+video.addEventListener("play", () => {
+  videoContainer.classList.remove("paused")
+})
+
+video.addEventListener("pause", () => {
+  videoContainer.classList.add("paused")
+})
+
+
+

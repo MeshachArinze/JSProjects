@@ -1,5 +1,5 @@
 body {
-  background-color: #F5F1E9;
+  background-color: #b3a892;
 }
 
 #calendar {
@@ -27,8 +27,8 @@ body {
   height: 40px;
   overflow: hidden;
   text-align: center;
-  background-color: #FFFFFF;
-  color: #787878;
+  background-color: #2f2727;
+  color: #531c1c;
 }
 
 #calendar_content {
@@ -72,13 +72,13 @@ body {
 
 #calendar_header h1 {
   font-size: 1.5em;
-  color: #FFFFFF;
+  color: #070101;
   float: left;
   width: 70%;
 }
 
 i[class^=icon-chevron] {
-  color: #FFFFFF;
+  color: #454545;
   float: left;
   width: 15%;
   border-radius: 50%;
